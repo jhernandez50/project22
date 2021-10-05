@@ -8,7 +8,7 @@ Ticket.belongsTo(Customer, {
 });
 
 // Ticket belongsTo ItMember
-Ticket.belongsTo(Itmemer, {
+Ticket.belongsTo(Itmember, {
     foreignKey: 'itmember_id'
   });
 
