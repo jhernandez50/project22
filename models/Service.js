@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Ticket extends Model {}
+class Service extends Model {}
 
-Ticket.init(
+Service.init(
   {
     // Ticket ID
     id: {
@@ -25,38 +25,28 @@ Ticket.init(
     type: DataTypes.STRING,
     allowNull: false
   },
-  ticket_type: {
+  year_of_exp: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+ },
+  service_type: {
     type: DataTypes.STRING,
     allowNull: false
  },
-  assigned: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
- },
- customer_id: {
+ member_id: {
     type: DataTypes.INTEGER,
     references: {
         model: "user",
         key: "id"
     }
-},
-itmember_id: {
-    type: DataTypes.INTEGER,
-    references: {
-        model: "user",
-        key: "id"
-    }
-},
-
-
-},
+}},
  {
     sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Ticket',
+    modelName: 'Service',
   }
 );
 
-module.exports = Ticket;
+module.exports = Service;

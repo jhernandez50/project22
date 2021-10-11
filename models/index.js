@@ -1,26 +1,30 @@
-const Customer = require('./Customer');
-const Itmember = require('./Itmember');
+// const Customer = require('./Customer');
+// const Itmember = require('./Itmember');
 const Ticket = require('./Ticket');
-
+const User=require('./User');
+const Service=require('./Service');
 // Ticket belongsTo Customer
-Ticket.belongsTo(Customer, {
+Ticket.belongsTo(User, {
   foreignKey: 'customer_id'
 });
 
 // Ticket belongsTo ItMember
-Ticket.belongsTo(Itmember, {
+Ticket.belongsTo(User, {
     foreignKey: 'itmember_id'
-  });
+ });
 
 // Customer have many Tickets
-Customer.hasMany(Ticket, {
-  foreignKey: 'ticket_id'
+User.hasMany(Ticket, {
+  as:'Customers'
 });
 
+Service.belongsTo(User, {
+  foreignKey: 'member_id'
+})
 // Itmemer have many Tickets
-Itmember.hasMany(Ticket, {
-    foreignKey: 'ticket_id'
-  });
+// Itmember.hasMany(Ticket, {
+  //   foreignKey: 'ticket_id'
+  // });
 
 // Products belongToMany Tags (through ProductTag)
 /*
@@ -38,7 +42,7 @@ Tag.belongsToMany(Product, {
 */
 
 module.exports = {
-  Customer,
-  Itmember,
+  User,
   Ticket,
+  Service
 };
